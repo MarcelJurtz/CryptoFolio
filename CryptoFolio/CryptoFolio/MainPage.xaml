@@ -16,6 +16,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -42,8 +43,14 @@
                 BackgroundColor="Black"
                 HorizontalOptions="FillAndExpand" />
 
-            <ScrollView
+            <!-- TODO -->
+            <Button 
+                x:Name="cmdLoadCoinList"
                 Grid.Row="3"
+                Text="Load Coin List"/>
+
+            <ScrollView
+                Grid.Row="4"
                 Grid.Column="0">
 
                 <!-- COIN ENTRIES -->

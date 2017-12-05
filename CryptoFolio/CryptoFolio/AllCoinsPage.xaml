@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CryptoFolio.AllCoinsPage">
+    <ContentPage.Content>
+        <ListView x:Name="myList"
+            BackgroundColor="Gray"
+            ItemsSource="{Binding Coins}"
+            HasUnevenRows="true"
+            RowHeight="-1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                Padding="15, 10, 10, 10"
+                                BackgroundColor="White">
+
+                                <Label  Text="{Binding Name}"
+                                    FontSize="18"
+                                    TextColor="Black"
+                                    VerticalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

@@ -14,6 +14,13 @@ namespace CryptoFolio
 		{
 			InitializeComponent();
             BindingContext = new VMMainPage();
+
+            cmdLoadCoinList.Clicked += OnCoinListClick;
 		}
+
+        void OnCoinListClick(Object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AllCoinsPage());
+        }
 	}
 }
