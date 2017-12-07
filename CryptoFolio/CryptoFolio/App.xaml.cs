@@ -13,7 +13,7 @@ namespace CryptoFolio
 		{
 			InitializeComponent();
 
-			MainPage = new CryptoFolio.MainPage();
+			MainPage = new NavigationPage(new CryptoFolio.MainPage());
 		}
 
 		protected override void OnStart ()

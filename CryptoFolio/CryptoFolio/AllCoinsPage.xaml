@@ -22,6 +22,11 @@
                                     FontSize="18"
                                     TextColor="Black"
                                     VerticalOptions="StartAndExpand"/>
+
+                                <Label Text="{Binding MainDisplayContent}"
+                                       FontSize="16"
+                                       TextColor="Black"
+                                       VerticalOptions="StartAndExpand"/>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

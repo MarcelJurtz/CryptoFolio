@@ -47,5 +47,14 @@ namespace CryptoFolio.ServiceHelper.Base
 
         [DataMember(Name = "last_updated")]
         public String LastUpdated { get; set; }
+
+        [IgnoreDataMember]
+        public String MainDisplayContent
+        {
+            get
+            {
+                return String.Format("{0} $, {1}% (24h)", PriceUsd, PercentChange24h);
+            }
+        }
     }
 }
