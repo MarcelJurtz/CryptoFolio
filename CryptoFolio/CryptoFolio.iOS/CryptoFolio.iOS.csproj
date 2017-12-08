@@ -138,6 +138,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\fa_list.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ethereum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iota.png" />
+  </ItemGroup>
   <Import Project="..\CryptoFolio\CryptoFolio.projitems" Label="Shared" Condition="Exists('..\CryptoFolio\CryptoFolio.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

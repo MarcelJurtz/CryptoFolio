@@ -70,5 +70,14 @@ namespace CryptoFolio.ServiceHelper.Base
                     return ColorValues.COLOR_RATE_DOWN;
             }
         }
+
+        [IgnoreDataMember]
+        public ImageSource Logo
+        {
+            get
+            {
+                return ImageSource.FromFile(Id);
+            }
+        }
     }
 }

@@ -11,6 +11,13 @@ namespace CryptoFolio.ViewModel
 {
     public class VMCoinList : VM, INotifyPropertyChanged
     {
+        public VMCoinList()
+        {
+            APIClient client = new APIClient();
+            var response = client.GetAllCurrencies();
+            Coins = new ObservableCollection<CoinDTO>(response as List<CoinDTO>);
+        }
+
         private ObservableCollection<CoinDTO> _Coins = new ObservableCollection<CoinDTO>();
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -27,13 +34,6 @@ namespace CryptoFolio.ViewModel
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public VMCoinList()
-        {
-            APIClient client = new APIClient();
-            var response = client.GetAllCurrencies();
-            Coins = new ObservableCollection<CoinDTO>(response as List<CoinDTO>);
         }
     }
 }

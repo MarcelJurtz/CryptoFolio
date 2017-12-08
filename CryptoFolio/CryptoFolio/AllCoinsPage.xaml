@@ -13,22 +13,54 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <StackLayout
+
+                            <Grid
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
                                 Padding="15, 10, 10, 10"
                                 BackgroundColor="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                            
+                            <!--
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                Padding="15, 10, 10, 10"
+                                BackgroundColor="White">-->
 
-                                <Label  Text="{Binding Name}"
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="2"
+                                    Source="{Binding Logo}"
+                                    WidthRequest="48"
+                                    HeightRequest="48"
+                                    Aspect="AspectFit"/>
+
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="{Binding Name}"
                                     FontSize="18"
                                     TextColor="Black"
                                     VerticalOptions="StartAndExpand"/>
 
-                                <Label Text="{Binding MainDisplayContent}"
-                                       FontSize="16"
-                                       TextColor="{Binding StatusColor}"
-                                       VerticalOptions="StartAndExpand"/>
-                            </StackLayout>
+                                <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding MainDisplayContent}"
+                                    FontSize="16"
+                                    TextColor="{Binding StatusColor}"
+                                    VerticalOptions="StartAndExpand"/>
+                            </Grid>
+                            <!--</StackLayout>-->
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
