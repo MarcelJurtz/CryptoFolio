@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CryptoFolio.ServiceHelper.Values;
+using System;
 using System.Runtime.Serialization;
+using Xamarin.Forms;
 
 namespace CryptoFolio.ServiceHelper.Base
 {
@@ -37,10 +39,10 @@ namespace CryptoFolio.ServiceHelper.Base
         public String TotalSupply { get; set; }
 
         [DataMember(Name = "percent_change_1h")]
-        public String PercentChange1h { get; set; }
+        public Decimal PercentChange1h { get; set; }
 
         [DataMember(Name = "percent_change_24h")]
-        public String PercentChange24h { get; set; }
+        public Decimal PercentChange24h { get; set; }
 
         [DataMember(Name = "percent_change_7d")]
         public String PercentChange7d { get; set; }
@@ -54,6 +56,18 @@ namespace CryptoFolio.ServiceHelper.Base
             get
             {
                 return String.Format("{0} $, {1}% (24h)", PriceUsd, PercentChange24h);
+            }
+        }
+
+        [IgnoreDataMember]
+        public Color StatusColor
+        {
+            get
+            {
+                if (PercentChange24h > 0)
+                    return ColorValues.COLOR_RATE_UP;
+                else
+                    return ColorValues.COLOR_RATE_DOWN;
             }
         }
     }

@@ -25,7 +25,7 @@
 
                                 <Label Text="{Binding MainDisplayContent}"
                                        FontSize="16"
-                                       TextColor="Black"
+                                       TextColor="{Binding StatusColor}"
                                        VerticalOptions="StartAndExpand"/>
                             </StackLayout>
                         </ViewCell.View>
