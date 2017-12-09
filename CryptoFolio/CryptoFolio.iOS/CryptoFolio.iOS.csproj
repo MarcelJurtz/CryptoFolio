@@ -149,10 +149,280 @@
     <BundleResource Include="Resources\bitcoin.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_cash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoin_gold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitconnect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cardano.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eos.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\ethereum.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\ethereum_classic.png" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\iota.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\litecoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lisk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\neo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\populous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\qtum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ripple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\stellar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\stratis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\0x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\achain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aeternity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ardor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\augur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bancor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\basic_attention_token.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\binance_coin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bitcoindark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blocknet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\byteball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bytecoin_bcn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bytom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\civic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\decentraland.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\decred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\digibyte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\digixdao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dogecoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dragonchain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\edgeless.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\einsteinium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ethos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\exchange_union.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\factom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\funfair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gamecredits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gnosis_gno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\golem_network_tokens.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gxshares.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hshare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconomi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\komodo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kyber_network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lykke.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\maidsafecoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\metal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\metaverse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\minexcoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monaco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monacoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nav_coin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nxt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\omisego.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\peercoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pivx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\qash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\raiblocks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\raiden_network_token.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rchain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\salt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\santiment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\siacoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\skycoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\steem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\storj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\streamr_datacoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\substratum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tenx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tether.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vechain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\verge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\veritaseum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vertcoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\walton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\waves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zcoin.png" />
   </ItemGroup>
   <Import Project="..\CryptoFolio\CryptoFolio.projitems" Label="Shared" Condition="Exists('..\CryptoFolio\CryptoFolio.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

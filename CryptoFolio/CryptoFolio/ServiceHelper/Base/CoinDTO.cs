@@ -76,7 +76,7 @@ namespace CryptoFolio.ServiceHelper.Base
         {
             get
             {
-                return ImageSource.FromFile(Id);
+                return ImageSource.FromFile(Id.Replace('-','_'));
             }
         }
     }
