@@ -21,11 +21,19 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+            <Picker
+                Grid.Row="0"
+                Grid.Column="0"
+                ItemsSource="{Binding Currencies}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"/>
 
             <Image
                 Grid.Row="0"
-                Grid.Column="0"
+                Grid.Column="1"
                 Aspect="AspectFit"
                 HorizontalOptions="End"
                 WidthRequest="24"
@@ -41,27 +49,28 @@
 
             <Label
                 Grid.Row="1"
-                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Text="{Binding TotalOutputString}"
                 HorizontalTextAlignment="Center"
                 FontSize="{Binding FONT_SIZE_MAIN_PAGE_HEADING}" />
 
             <Label
                 Grid.Row="2"
-                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Text="{Binding TotalInputRatioString}"
                 HorizontalTextAlignment="Center"
                 FontSize="{Binding FONT_SIZE_MAIN_PAGE_SUBHEADING}" />
 
             <BoxView 
                 Grid.Row="3"
+                Grid.ColumnSpan="2"
                 HeightRequest="1" 
                 BackgroundColor="Black"
                 HorizontalOptions="FillAndExpand" />
 
             <ScrollView
                 Grid.Row="5"
-                Grid.Column="0">
+                Grid.ColumnSpan="2">
 
                 <!-- COIN ENTRIES -->
 

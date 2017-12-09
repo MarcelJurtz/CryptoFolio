@@ -1,4 +1,5 @@
 ﻿using CryptoFolio.ServiceHelper;
+using CryptoFolio.ServiceHelper.Values;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace CryptoFolio.ViewModel
         {
             Navigation = navigation;
             _ListIconTapCommand = new Command(OnListIconTap);
+            _Currencies = FiatCurrency.GetAllSupportedCurrencies();
+            _SelectedCurrency = _Currencies.Find(x => x.ID == PreferenceManager.DefaultCurrencyId);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -31,6 +34,30 @@ namespace CryptoFolio.ViewModel
         void OnListIconTap()
         {
             Navigation.PushAsync(new AllCoinsPage());
+        }
+
+        private List<FiatCurrency> _Currencies;
+        public List<FiatCurrency> Currencies
+        {
+            get { return _Currencies; }
+        }
+
+        private FiatCurrency _SelectedCurrency;
+        public FiatCurrency SelectedCurrency
+        {
+            get
+            {
+                return _SelectedCurrency;
+            }
+            set
+            {
+                if(_SelectedCurrency != value)
+                {
+                    _SelectedCurrency = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCurrency)));
+                    PreferenceManager.DefaultCurrencyId = _SelectedCurrency.ID;
+                }
+            }
         }
     }
 }

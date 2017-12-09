@@ -25,7 +25,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\APIClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\CoinDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\LiteDBManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\PreferenceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Values\ColorValues.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Values\FiatCurrency.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Values\Symbols.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMCoinDetails.cs" />
