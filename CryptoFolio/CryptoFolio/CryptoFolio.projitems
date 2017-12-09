@@ -9,7 +9,8 @@
     <Import_RootNamespace>CryptoFolio</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AllCoinsPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AllCoins\AllCoinsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -18,12 +19,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CoinDetails\CoinDetailPage.xaml.cs">
+      <DependentUpon>CoinDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\APIClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\CoinDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\LiteDBManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Values\ColorValues.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Values\Symbols.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMCoinList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMCoinDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMAllCoins.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainPage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -35,10 +41,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AllCoinsPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\CoinDetails\CoinDetailPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AllCoins\AllCoinsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)CoinDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\CoinDetails\CoinDetailsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\AllCoins\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CryptoFolio.CoinDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Padding>
+        <OnPlatform 
+            x:TypeArguments="Thickness"                     
+            iOS="20, 40, 20, 20"                     
+            Android="20, 20, 20, 20"                    
+            WinPhone="20, 20, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                HeightRequest="64"
+                WidthRequest="64"
+                Source="{Binding LogoSource}" />
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Text="{Binding Name}"
+                FontSize="26"
+                TextColor="Black"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalOptions="FillAndExpand"
+                Text="{Binding CurrentRate}"
+                FontSize="20"
+                TextColor="Black"/>
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="2"
+                VerticalOptions="FillAndExpand"
+                Text="{Binding PercentageChanged24h}"
+                FontSize="20"
+                TextColor="{Binding StatusColor}"
+                HorizontalTextAlignment="End"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

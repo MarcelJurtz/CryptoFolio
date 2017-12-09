@@ -7,13 +7,13 @@
         <ListView x:Name="myList"
             BackgroundColor="Gray"
             ItemsSource="{Binding Coins}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             HasUnevenRows="true"
             RowHeight="-1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-
                             <Grid
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
@@ -27,8 +27,8 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                            
-                            <!--
+                                
+                                <!--
                             <StackLayout
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
