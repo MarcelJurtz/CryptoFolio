@@ -2350,26 +2350,26 @@ namespace CryptoFolio.Droid
 			// aapt resource value: 0x7f020059
 			public const int avd_hide_password = 2130837593;
 			
-			// aapt resource value: 0x7f02018f
-			public const int avd_hide_password_1 = 2130837903;
-			
 			// aapt resource value: 0x7f020190
-			public const int avd_hide_password_2 = 2130837904;
+			public const int avd_hide_password_1 = 2130837904;
 			
 			// aapt resource value: 0x7f020191
-			public const int avd_hide_password_3 = 2130837905;
+			public const int avd_hide_password_2 = 2130837905;
+			
+			// aapt resource value: 0x7f020192
+			public const int avd_hide_password_3 = 2130837906;
 			
 			// aapt resource value: 0x7f02005a
 			public const int avd_show_password = 2130837594;
 			
-			// aapt resource value: 0x7f020192
-			public const int avd_show_password_1 = 2130837906;
-			
 			// aapt resource value: 0x7f020193
-			public const int avd_show_password_2 = 2130837907;
+			public const int avd_show_password_1 = 2130837907;
 			
 			// aapt resource value: 0x7f020194
-			public const int avd_show_password_3 = 2130837908;
+			public const int avd_show_password_2 = 2130837908;
+			
+			// aapt resource value: 0x7f020195
+			public const int avd_show_password_3 = 2130837909;
 			
 			// aapt resource value: 0x7f02005b
 			public const int bancor = 2130837595;
@@ -3175,11 +3175,11 @@ namespace CryptoFolio.Droid
 			// aapt resource value: 0x7f020166
 			public const int notification_icon_background = 2130837862;
 			
-			// aapt resource value: 0x7f02018d
-			public const int notification_template_icon_bg = 2130837901;
-			
 			// aapt resource value: 0x7f02018e
-			public const int notification_template_icon_low_bg = 2130837902;
+			public const int notification_template_icon_bg = 2130837902;
+			
+			// aapt resource value: 0x7f02018f
+			public const int notification_template_icon_low_bg = 2130837903;
 			
 			// aapt resource value: 0x7f020167
 			public const int notification_tile_bg = 2130837863;
@@ -3290,10 +3290,13 @@ namespace CryptoFolio.Droid
 			public const int waves = 2130837898;
 			
 			// aapt resource value: 0x7f02018b
-			public const int zcoin = 2130837899;
+			public const int zcash = 2130837899;
 			
 			// aapt resource value: 0x7f02018c
-			public const int zrx = 2130837900;
+			public const int zcoin = 2130837900;
+			
+			// aapt resource value: 0x7f02018d
+			public const int zrx = 2130837901;
 			
 			static Drawable()
 			{

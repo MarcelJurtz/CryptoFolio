@@ -427,6 +427,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\fa_plus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zcash.png" />
+  </ItemGroup>
   <Import Project="..\CryptoFolio\CryptoFolio.projitems" Label="Shared" Condition="Exists('..\CryptoFolio\CryptoFolio.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
