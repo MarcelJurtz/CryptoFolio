@@ -239,7 +239,7 @@
     <AndroidResource Include="Resources\Drawable\stratis.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\0x.png" />
+    <AndroidResource Include="Resources\Drawable\zrx.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\achain.png" />

@@ -206,7 +206,7 @@
     <BundleResource Include="Resources\stratis.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\0x.png" />
+    <BundleResource Include="Resources\zrx.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\achain.png" />
