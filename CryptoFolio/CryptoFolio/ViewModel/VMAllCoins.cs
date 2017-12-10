@@ -17,7 +17,7 @@ namespace CryptoFolio.ViewModel
         {
             _Navigation = navigation;
             APIClient client = new APIClient();
-            var response = client.GetAllCurrencies();
+            var response = client.GetAllCurrenciesByDefaultFiatCurrency();
             Coins = new ObservableCollection<CoinDTO>(response as List<CoinDTO>);
             _ListCoinTapCommand = new Command(OnListCoinTap);
         }

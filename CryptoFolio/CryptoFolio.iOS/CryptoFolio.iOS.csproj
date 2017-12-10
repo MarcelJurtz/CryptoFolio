@@ -242,7 +242,7 @@
     <BundleResource Include="Resources\blocknet.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\bts.png" />
+    <BundleResource Include="Resources\bitshares.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\byteball.png" />
@@ -423,6 +423,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\zcoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fa_plus.png" />
   </ItemGroup>
   <Import Project="..\CryptoFolio\CryptoFolio.projitems" Label="Shared" Condition="Exists('..\CryptoFolio\CryptoFolio.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

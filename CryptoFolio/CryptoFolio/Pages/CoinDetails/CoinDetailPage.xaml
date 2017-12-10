@@ -16,6 +16,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -56,6 +57,20 @@
                 TextColor="{Binding StatusColor}"
                 HorizontalTextAlignment="End"/>
 
+            <Image
+                Grid.Row="3"
+                Grid.ColumnSpan="3"
+                HorizontalOptions="Center"
+                HeightRequest="48"
+                WidthRequest="48"
+                Source="{Binding PlusIcon}">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding PlusIconTapCommand}" />
+                </Image.GestureRecognizers>
+
+            </Image>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

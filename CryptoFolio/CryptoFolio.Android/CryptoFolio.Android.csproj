@@ -275,7 +275,7 @@
     <AndroidResource Include="Resources\Drawable\blocknet.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\bts.png" />
+    <AndroidResource Include="Resources\Drawable\bitshares.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\byteball.png" />
@@ -456,6 +456,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\zcoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\fa_plus.png" />
   </ItemGroup>
   <Import Project="..\CryptoFolio\CryptoFolio.projitems" Label="Shared" Condition="Exists('..\CryptoFolio\CryptoFolio.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

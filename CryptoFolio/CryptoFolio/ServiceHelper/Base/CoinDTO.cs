@@ -23,6 +23,9 @@ namespace CryptoFolio.ServiceHelper.Base
         [DataMember(Name = "price_usd")]
         public String PriceUsd { get; set; }
 
+        [DataMember(Name = "price_eur")]
+        public String PriceEur { get; set; }
+
         [DataMember(Name = "price_btc")]
         public String PriceBtc { get; set; }
 
@@ -51,15 +54,6 @@ namespace CryptoFolio.ServiceHelper.Base
         public String LastUpdated { get; set; }
 
         [IgnoreDataMember]
-        public String MainDisplayContent
-        {
-            get
-            {
-                return String.Format("{0} $, {1}% (24h)", PriceUsd, PercentChange24h);
-            }
-        }
-
-        [IgnoreDataMember]
         public Color StatusColor
         {
             get
@@ -77,6 +71,22 @@ namespace CryptoFolio.ServiceHelper.Base
             get
             {
                 return ImageSource.FromFile(Id.Equals("0x") ? Symbol.ToLower().Replace('-','_') : Id.Replace('-','_'));
+            }
+        }
+
+        [IgnoreDataMember]
+        public String DisplayValue
+        {
+            get
+            {
+                FiatCurrency defaultCurrency = FiatCurrency.GetDefaultFiatCurrency();
+                switch(defaultCurrency.ID)
+                {
+                    case "EUR":
+                        return String.Format("{0} {1}, {2} % (24h)", PriceEur, defaultCurrency.Symbol, PercentChange24h);
+                    default:
+                        return String.Format("{0} {1}, {2} % (24h)", PriceUsd, defaultCurrency.Symbol, PercentChange24h);
+                }
             }
         }
     }

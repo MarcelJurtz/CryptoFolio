@@ -3,6 +3,7 @@ using CryptoFolio.ServiceHelper.Base;
 using CryptoFolio.ServiceHelper.Values;
 using System;
 using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace CryptoFolio.ViewModel
@@ -21,6 +22,8 @@ namespace CryptoFolio.ViewModel
             _CurrentRate = _Coin.PriceUsd;
 
             _PercentageChanged24h = String.Format("{0} % {1}",_Coin.PercentChange24h, _Coin.PercentChange24h > 0 ? Symbols.ARROW_UP : Symbols.ARROW_DOWN);
+
+            _PlusIconTapCommand = new Command(OnPlusIconTap);
         }
 
         private CoinDTO _Coin;
@@ -108,6 +111,16 @@ namespace CryptoFolio.ViewModel
                 else
                     return ColorValues.COLOR_RATE_DOWN;
             }
+        }
+
+        public ImageSource PlusIcon { get { return ImageSource.FromFile("fa_plus.png"); } }
+
+        private ICommand _PlusIconTapCommand;
+        public ICommand PlusIconTapCommand { get { return _PlusIconTapCommand; } }
+
+        void OnPlusIconTap()
+        {
+            //Navigation.PushAsync(new AllCoinsPage());
         }
     }
 }
