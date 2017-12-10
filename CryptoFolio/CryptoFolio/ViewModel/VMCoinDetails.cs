@@ -19,7 +19,6 @@ namespace CryptoFolio.ViewModel
             _CoinId = _Coin.Id;
             _Name = String.Format("{0} ({1})", _Coin.Name, _Coin.Symbol);
             _LogoSource = _Coin.Logo;
-            _CurrentRate = _Coin.PriceUsd;
 
             _PercentageChanged24h = String.Format("{0} % {1}",_Coin.PercentChange24h, _Coin.PercentChange24h > 0 ? Symbols.ARROW_UP : Symbols.ARROW_DOWN);
 
@@ -68,20 +67,11 @@ namespace CryptoFolio.ViewModel
             }
         }
 
-        private string _CurrentRate;
-        public string CurrentRate
+        public string DisplayValue
         {
             get
             {
-                return _CurrentRate;
-            }
-            set
-            {
-                if (_CurrentRate != value)
-                {
-                    _CurrentRate = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentRate)));
-                }
+                return _Coin.DisplayValue;
             }
         }
 

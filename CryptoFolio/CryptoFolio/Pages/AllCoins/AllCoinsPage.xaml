@@ -55,7 +55,7 @@
                                 <Label 
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Text="{Binding DisplayValue}"
+                                    Text="{Binding DisplayValueWithPercentage}"
                                     FontSize="16"
                                     TextColor="{Binding StatusColor}"
                                     VerticalOptions="StartAndExpand"/>

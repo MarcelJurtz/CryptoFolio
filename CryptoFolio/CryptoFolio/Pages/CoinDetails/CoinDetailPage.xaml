@@ -44,7 +44,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 VerticalOptions="FillAndExpand"
-                Text="{Binding CurrentRate}"
+                Text="{Binding DisplayValue}"
                 FontSize="20"
                 TextColor="Black"/>
 

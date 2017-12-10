@@ -21,13 +21,13 @@ namespace CryptoFolio.ServiceHelper.Base
         public String Rank { get; set; }
 
         [DataMember(Name = "price_usd")]
-        public String PriceUsd { get; set; }
+        public Decimal PriceUsd { get; set; }
 
         [DataMember(Name = "price_eur")]
-        public String PriceEur { get; set; }
+        public Decimal PriceEur { get; set; }
 
         [DataMember(Name = "price_btc")]
-        public String PriceBtc { get; set; }
+        public Decimal PriceBtc { get; set; }
 
         [DataMember(Name = "24h_volume_usd")]
         public String VolumeUsd24h { get; set; }
@@ -83,10 +83,19 @@ namespace CryptoFolio.ServiceHelper.Base
                 switch(defaultCurrency.ID)
                 {
                     case "EUR":
-                        return String.Format("{0} {1}, {2} % (24h)", PriceEur, defaultCurrency.Symbol, PercentChange24h);
+                        return String.Format("{0:F2} {1}", PriceEur, defaultCurrency.Symbol);
                     default:
-                        return String.Format("{0} {1}, {2} % (24h)", PriceUsd, defaultCurrency.Symbol, PercentChange24h);
+                        return String.Format("{0:F2} {1}", PriceUsd, defaultCurrency.Symbol);
                 }
+            }
+        }
+
+        [IgnoreDataMember]
+        public String DisplayValueWithPercentage
+        {
+            get
+            {
+                return String.Format("{0}, {1} % (24h)", DisplayValue, PercentChange24h);
             }
         }
     }
