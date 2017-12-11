@@ -12,14 +12,19 @@ namespace CryptoFolio.ViewModel
     public class VMAllCoins : VM, INotifyPropertyChanged
     {
         private INavigation _Navigation;
+        APIClient client;
 
         public VMAllCoins(INavigation navigation)
         {
             _Navigation = navigation;
-            APIClient client = new APIClient();
-            var response = client.GetAllCurrenciesByDefaultFiatCurrency();
-            Coins = new ObservableCollection<CoinDTO>(response as List<CoinDTO>);
+            _IsLoading = true;
+
+
+            client = new APIClient();
+            
             _ListCoinTapCommand = new Command(OnListCoinTap);
+
+            LoadCoinsAsync();
         }
 
         private ObservableCollection<CoinDTO> _Coins = new ObservableCollection<CoinDTO>();
@@ -30,8 +35,11 @@ namespace CryptoFolio.ViewModel
             get { return _Coins; }
             set
             {
-                _Coins = value;
-                OnPropertyChanged();
+                if(_Coins != value)
+                {
+                    _Coins = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Coins)));
+                }
             }
         }
 
@@ -66,6 +74,48 @@ namespace CryptoFolio.ViewModel
 
                 SelectedItem = null;
             }
+        }
+
+        private bool _IsLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                if(_IsLoading != value)
+                {
+                    _IsLoading = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLoading)));
+                }
+            }
+        }
+
+        private bool _ItemsLoaded;
+        public bool ItemsLoaded
+        {
+            get
+            {
+                return _ItemsLoaded;
+            }
+            set
+            {
+                if(_ItemsLoaded != value)
+                {
+                    _ItemsLoaded = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemsLoaded)));
+                }
+            }
+        }
+
+        private async void LoadCoinsAsync()
+        {
+            var response = await client.GetAllCurrenciesByDefaultFiatCurrencyAsync();
+            Coins = new ObservableCollection<CoinDTO>(response);
+            ItemsLoaded = true;
+            IsLoading = false;
         }
     }
 }

@@ -4,38 +4,36 @@
              x:Class="CryptoFolio.AllCoinsPage"
              Title="All Coins">
     <ContentPage.Content>
-        <ListView x:Name="myList"
+        <AbsoluteLayout
+            HorizontalOptions="FillAndExpand" 
+            VerticalOptions="FillAndExpand" 
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <ListView x:Name="myList"
             BackgroundColor="Gray"
             ItemsSource="{Binding Coins}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             HasUnevenRows="true"
-            RowHeight="-1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <Grid
+            RowHeight="-1"
+            IsVisible="{Binding ItemsLoaded}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
                                 Padding="15, 10, 10, 10"
                                 BackgroundColor="White">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                
-                                <!--
-                            <StackLayout
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="StartAndExpand"
-                                Padding="15, 10, 10, 10"
-                                BackgroundColor="White">-->
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                <Image
+                                    <Image
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Grid.RowSpan="2"
@@ -44,7 +42,7 @@
                                     HeightRequest="48"
                                     Aspect="AspectFit"/>
 
-                                <Label 
+                                    <Label 
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Text="{Binding Name}"
@@ -52,19 +50,36 @@
                                     TextColor="Black"
                                     VerticalOptions="StartAndExpand"/>
 
-                                <Label 
+                                    <Label 
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Text="{Binding DisplayValueWithPercentage}"
                                     FontSize="16"
                                     TextColor="{Binding StatusColor}"
                                     VerticalOptions="StartAndExpand"/>
-                            </Grid>
-                            <!--</StackLayout>-->
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                </Grid>
+                                <!--</StackLayout>-->
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ContentView 
+            x:Name="overlay" 
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+            AbsoluteLayout.LayoutFlags="All" 
+            IsVisible="True" 
+            BackgroundColor="#C0808080" 
+            Padding="10, 0">
+                <ActivityIndicator  
+                WidthRequest="110" 
+                HeightRequest="70" 
+                IsVisible="{Binding IsLoading}" 
+                IsRunning="{Binding IsLoading}"
+                Color="Black" 
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"/>
+            </ContentView>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

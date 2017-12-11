@@ -4,6 +4,7 @@ using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CryptoFolio.ServiceHelper
 {
@@ -37,14 +38,13 @@ namespace CryptoFolio.ServiceHelper
             return response;
         }
 
-        public CoinDTO GetBitcoin()
+        public Task<List<CoinDTO>> GetAllCurrenciesByDefaultFiatCurrencyAsync()
         {
-            List<CoinDTO> response;
-            using (var client = new JsonServiceClient(SERVICE_URL))
+            using(var client = new JsonServiceClient(SERVICE_URL))
             {
-                response = client.Get<List<CoinDTO>>("/bitcoin");
+                String path = PreferenceManager.DefaultCurrencyId == "USD" ? "/" : "/?convert=" + FiatCurrency.GetFiatCurrencyById(PreferenceManager.DefaultCurrencyId).ApiConvertAppendix;
+                return client.GetAsync<List<CoinDTO>>(path);
             }
-            return response[0];
         }
     }
 }
