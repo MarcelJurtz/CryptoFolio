@@ -1,5 +1,6 @@
 ﻿using CryptoFolio.ServiceHelper;
 using CryptoFolio.ServiceHelper.Base;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -125,7 +126,7 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
                     IsRefreshing = true;
                     LoadCoinsAsync();
@@ -135,8 +136,22 @@ namespace CryptoFolio.ViewModel
 
         private async void LoadCoinsAsync()
         {
-            var response = await client.GetAllCurrenciesByDefaultFiatCurrencyAsync();
-            Coins = new ObservableCollection<CoinDTO>(response);
+            DateTime localDate = DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate();
+            DateTime currentDate = DateTime.Now;
+            DateTime delta = DateTime.Now - TimeSpan.FromDays(1);
+
+            if (DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate() < DateTime.Now - TimeSpan.FromDays(1))
+            {
+                var response = await client.GetAllCurrenciesByDefaultFiatCurrencyAsync();
+                Coins = new ObservableCollection<CoinDTO>(response);
+
+                DependencyService.Get<IVM>().GetLiteDbManager().SaveCoins(response);
+            }
+            else
+            {
+                Coins = new ObservableCollection<CoinDTO>(DependencyService.Get<IVM>().GetLiteDbManager().LoadCoins());
+            }
+            
             ItemsLoaded = true;
             IsLoading = false;
             IsRefreshing = false;
