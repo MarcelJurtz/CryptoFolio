@@ -110,12 +110,36 @@ namespace CryptoFolio.ViewModel
             }
         }
 
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    IsRefreshing = true;
+                    LoadCoinsAsync();
+                });
+            }
+        }
+
         private async void LoadCoinsAsync()
         {
             var response = await client.GetAllCurrenciesByDefaultFiatCurrencyAsync();
             Coins = new ObservableCollection<CoinDTO>(response);
             ItemsLoaded = true;
             IsLoading = false;
+            IsRefreshing = false;
         }
     }
 }

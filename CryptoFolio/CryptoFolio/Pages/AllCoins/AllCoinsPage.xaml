@@ -16,7 +16,10 @@
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             HasUnevenRows="true"
             RowHeight="-1"
-            IsVisible="{Binding ItemsLoaded}">
+            IsVisible="{Binding ItemsLoaded}"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+           IsRefreshing="{Binding IsRefreshing}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
