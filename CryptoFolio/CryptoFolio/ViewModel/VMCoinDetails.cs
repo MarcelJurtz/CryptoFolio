@@ -1,4 +1,5 @@
 ﻿using CryptoFolio.Extensions;
+using CryptoFolio.Pages;
 using CryptoFolio.ServiceHelper.Base;
 using CryptoFolio.ServiceHelper.Values;
 using System;
@@ -10,11 +11,11 @@ namespace CryptoFolio.ViewModel
 {
     public class VMCoinDetails : VM, INotifyPropertyChanged
     {
-        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public VMCoinDetails(INavigation navigation, CoinDTO coin)
         {
+            Navigation = navigation;
             _Coin = coin;
             _CoinId = _Coin.Id;
             _Name = String.Format("{0} ({1})", _Coin.Name, _Coin.Symbol);
@@ -25,6 +26,7 @@ namespace CryptoFolio.ViewModel
             _PlusIconTapCommand = new Command(OnPlusIconTap);
         }
 
+        private INavigation Navigation;
         private CoinDTO _Coin;
 
         public String Title
@@ -110,7 +112,7 @@ namespace CryptoFolio.ViewModel
 
         void OnPlusIconTap()
         {
-            //Navigation.PushAsync(new AllCoinsPage());
+            Navigation.PushAsync(new InvestmentPage(_Coin));
         }
     }
 }

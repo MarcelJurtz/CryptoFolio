@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CryptoFolio.Pages.InvestmentPage"
+             Title="{Binding Header}">
+    <ContentPage.Padding>
+        <OnPlatform 
+            x:TypeArguments="Thickness"                     
+            iOS="20, 40, 20, 20"                     
+            Android="20, 20, 20, 20"                    
+            WinPhone="20, 20, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- RECEIVED -->
+            
+            <Label
+                x:Name="lblReceived"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                Text="{Binding ReceivedText}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <Entry
+                x:Name="txtReceived"
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                Text="{Binding Received}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <Label
+                x:Name="lblReceivedCurrency"
+                Grid.Row="0"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                Text="{Binding ReceivedCurrencySymbol}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <!-- SPENT -->
+
+            <Label
+                x:Name="lblSpent"
+                Grid.Row="1"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                Text="{Binding SpentText}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <Entry
+                x:Name="txtSpent"
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                Text="{Binding Spent}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <Label
+                x:Name="lblSpentCurrency"
+                Grid.Row="1"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                Text="{Binding SpentCurrencySymbol}"
+                FontSize="16"
+                TextColor="Black"/>
+            
+            <!-- TIMESTAMP -->
+
+            <Label
+                x:Name="lblTimestamp"
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                Text="{Binding TimestampText}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <DatePicker
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                VerticalOptions="Center"/>
+            
+            <!-- OK / Cancel -->
+
+            <Button
+                x:Name="cmdCancel"
+                Grid.Row="3"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Command="{Binding CancelCommand}"
+                Text="{Binding CancelButtonText}"/>
+
+            <Button
+                x:Name="cmdSave"
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Command="{Binding SaveCommand}"
+                Text="{Binding SaveButtonText}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

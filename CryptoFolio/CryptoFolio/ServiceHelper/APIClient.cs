@@ -1,10 +1,12 @@
 ﻿using CryptoFolio.ServiceHelper.Base;
 using CryptoFolio.ServiceHelper.Values;
+using CryptoFolio.ViewModel;
 using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace CryptoFolio.ServiceHelper
 {
@@ -32,7 +34,7 @@ namespace CryptoFolio.ServiceHelper
             List<CoinDTO> response;
             using (var client = new JsonServiceClient(SERVICE_URL))
             {
-                String path = PreferenceManager.DefaultCurrencyId == "USD" ? "/" : "/?convert=" + FiatCurrency.GetFiatCurrencyById(PreferenceManager.DefaultCurrencyId).ApiConvertAppendix;
+                String path = PreferenceManager.DefaultCurrencyId == "USD" ? "/" : "/?convert=" + DependencyService.Get<IVM>().GetFiatCurrencyManager().GetFiatCurrencyById(PreferenceManager.DefaultCurrencyId).ApiConvertAppendix;
                 response = client.Get<List<CoinDTO>>(path);
             }
             return response;
@@ -42,7 +44,7 @@ namespace CryptoFolio.ServiceHelper
         {
             using(var client = new JsonServiceClient(SERVICE_URL))
             {
-                String path = PreferenceManager.DefaultCurrencyId == "USD" ? "/" : "/?convert=" + FiatCurrency.GetFiatCurrencyById(PreferenceManager.DefaultCurrencyId).ApiConvertAppendix;
+                String path = PreferenceManager.DefaultCurrencyId == "USD" ? "/" : "/?convert=" + DependencyService.Get<IVM>().GetFiatCurrencyManager().GetFiatCurrencyById(PreferenceManager.DefaultCurrencyId).ApiConvertAppendix;
                 return client.GetAsync<List<CoinDTO>>(path);
             }
         }

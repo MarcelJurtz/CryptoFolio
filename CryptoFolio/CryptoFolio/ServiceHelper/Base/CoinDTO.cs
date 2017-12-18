@@ -1,4 +1,5 @@
 ﻿using CryptoFolio.ServiceHelper.Values;
+using CryptoFolio.ViewModel;
 using System;
 using System.Runtime.Serialization;
 using Xamarin.Forms;
@@ -79,7 +80,7 @@ namespace CryptoFolio.ServiceHelper.Base
         {
             get
             {
-                FiatCurrency defaultCurrency = FiatCurrency.GetDefaultFiatCurrency();
+                FiatCurrency defaultCurrency = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency();
                 switch(defaultCurrency.ID)
                 {
                     case "EUR":

@@ -15,7 +15,7 @@ namespace CryptoFolio.ViewModel
         {
             Navigation = navigation;
             _ListIconTapCommand = new Command(OnListIconTap);
-            _Currencies = FiatCurrency.GetAllSupportedCurrencies();
+            _Currencies = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetAllSupportedCurrencies();
             _SelectedCurrency = _Currencies.Find(x => x.ID == PreferenceManager.DefaultCurrencyId);
         }
 

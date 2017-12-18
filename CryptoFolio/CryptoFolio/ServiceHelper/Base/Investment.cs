@@ -1,12 +1,17 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 
 namespace CryptoFolio.ServiceHelper.Base
 {
     public class Investment
     {
+        [BsonId]
+        public int Id { get; set; }
         public String CryptoCurrencySymbol { get; set; }
-        public decimal ExpenseInDefaultCurrency { get; set; }
+        public decimal ExpenseInFiatCurrency { get; set; }
+        public String FiatCurrencySymbol { get; set; } 
         public decimal RevenueInCryptoCurrency { get; set; }
         public DateTime TransactionTimestamp { get; set; }
+        public String Comment { get; set; }
     }
 }
