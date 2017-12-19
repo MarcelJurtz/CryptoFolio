@@ -78,6 +78,46 @@ namespace CryptoFolio.ViewModel
 
         public String TimestampText { get { return "Date:"; } }
 
+        private DateTime _TransactionDate;
+        public DateTime TransactionDate
+        {
+            get
+            {
+                return _TransactionDate;
+            }
+            set
+            {
+                if(_TransactionDate != value)
+                {
+                    _TransactionDate = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TransactionDate)));
+                }
+            }
+        }
+
+        #endregion
+
+        #region Comment
+
+        public String CommentText { get { return "Comment:"; } }
+
+        private String _Comment;
+        public String Comment
+        {
+            get
+            {
+                return _Comment;
+            }
+            set
+            {
+                if(_Comment != value)
+                {
+                    _Comment = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Comment)));
+                }
+            }
+        }
+
         #endregion
 
         #region Buttons OK / Cancel
@@ -97,7 +137,15 @@ namespace CryptoFolio.ViewModel
 
         private void OnSaveClick()
         {
-            // TODO
+            Investment investment = new Investment
+            {
+                CryptoCurrencySymbol = Coin.Symbol,
+                FiatCurrencySymbol = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol,
+                ExpenseInFiatCurrency = _Spent,
+                RevenueInCryptoCurrency = _Received,
+                TransactionTimestamp = _TransactionDate,
+                Comment = _Comment
+            };
         }
 
         #endregion

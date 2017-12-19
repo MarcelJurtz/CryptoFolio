@@ -16,6 +16,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -99,11 +100,32 @@
                 Grid.ColumnSpan="2"
                 VerticalOptions="Center"/>
             
+            <!-- Comment -->
+
+            <Label
+                x:Name="lblComment"
+                Grid.Row="3"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                Text="{Binding CommentText}"
+                FontSize="16"
+                TextColor="Black"/>
+
+            <Entry
+                x:Name="txtComment"
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                VerticalOptions="Center"
+                Text="{Binding Comment}"
+                FontSize="16"
+                TextColor="Black"/>
+
             <!-- OK / Cancel -->
 
             <Button
                 x:Name="cmdCancel"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="0"
                 HorizontalOptions="Start"
                 VerticalOptions="End"
@@ -112,7 +134,7 @@
 
             <Button
                 x:Name="cmdSave"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 HorizontalOptions="End"
