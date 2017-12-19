@@ -13,6 +13,7 @@ namespace CryptoFolio.ServiceHelper
         private LiteDatabase liteDatabase;
         private const String dbPath = "CoinDatabase.db";
         private const String coinDocument = "coins";
+        private const String investmentDocument = "investments";
 
         public LiteDBManager()
         {
@@ -44,6 +45,12 @@ namespace CryptoFolio.ServiceHelper
         {
             var res = liteDatabase.GetCollection<CoinList>(coinDocument).FindById(0);
             return res?.Updated ?? DateTime.MinValue;
+        }
+
+        public void SaveInvestment(Investment investment)
+        {
+            var doc = liteDatabase.GetCollection<Investment>(investmentDocument);
+            doc.Insert(investment);
         }
     }
 }

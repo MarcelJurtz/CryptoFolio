@@ -1,4 +1,5 @@
-﻿using CryptoFolio.ServiceHelper.Base;
+﻿using CryptoFolio.ServiceHelper;
+using CryptoFolio.ServiceHelper.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -146,6 +147,9 @@ namespace CryptoFolio.ViewModel
                 TransactionTimestamp = _TransactionDate,
                 Comment = _Comment
             };
+
+            LiteDBManager liteDBManager = DependencyService.Get<IVM>().GetLiteDbManager();
+            liteDBManager.SaveInvestment(investment);
         }
 
         #endregion

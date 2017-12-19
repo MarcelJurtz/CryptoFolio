@@ -13,5 +13,14 @@ namespace CryptoFolio.ServiceHelper.Base
         public decimal RevenueInCryptoCurrency { get; set; }
         public DateTime TransactionTimestamp { get; set; }
         public String Comment { get; set; }
+
+        [BsonIgnore]
+        public String FormattedDescription
+        {
+            get
+            {
+                return $"Bought {RevenueInCryptoCurrency} {CryptoCurrencySymbol} for {ExpenseInFiatCurrency} {FiatCurrencySymbol}";
+            }
+        }
     }
 }
