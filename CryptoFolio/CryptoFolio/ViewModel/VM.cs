@@ -8,11 +8,13 @@ namespace CryptoFolio.ViewModel
     {
         private LiteDBManager liteDbManager;
         private FiatCurrencyManager fiatCurrencyManager;
+        private ImageManager imageManager;
 
         public VM()
         {
             liteDbManager = new LiteDBManager();
             fiatCurrencyManager = new FiatCurrencyManager();
+            imageManager = new ImageManager();
         }
 
         private const int _FONT_SIZE_MAIN_PAGE_HEADING = 32;
@@ -29,6 +31,11 @@ namespace CryptoFolio.ViewModel
         public FiatCurrencyManager GetFiatCurrencyManager()
         {
             return fiatCurrencyManager;
+        }
+
+        public ImageManager GetImageManager()
+        {
+            return imageManager;
         }
     }
 }

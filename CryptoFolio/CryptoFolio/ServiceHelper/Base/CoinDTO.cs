@@ -71,7 +71,8 @@ namespace CryptoFolio.ServiceHelper.Base
         {
             get
             {
-                return ImageSource.FromFile(Id.Equals("0x") ? Symbol.ToLower().Replace('-','_') : Id.Replace('-','_'));
+                //return ImageSource.FromFile(Id.Equals("0x") ? Symbol.ToLower().Replace('-','_') : Id.Replace('-','_'));
+                return DependencyService.Get<IVM>().GetImageManager().GetImageById(Id);
             }
         }
 

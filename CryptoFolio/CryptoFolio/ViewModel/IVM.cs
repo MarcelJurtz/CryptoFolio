@@ -6,5 +6,6 @@ namespace CryptoFolio.ViewModel
     {
         LiteDBManager GetLiteDbManager();
         FiatCurrencyManager GetFiatCurrencyManager();
+        ImageManager GetImageManager();
     }
 }

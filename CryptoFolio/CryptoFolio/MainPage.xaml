@@ -73,6 +73,65 @@
                 Grid.ColumnSpan="2">
 
                 <!-- COIN ENTRIES -->
+                <ListView 
+                    x:Name="aggregatedInvestmentsList"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    BackgroundColor="White"
+                    ItemsSource="{Binding AggregatedInvestments}"
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                    HasUnevenRows="true"
+                    RowHeight="-1"
+                    IsVisible="{Binding ItemsLoaded}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                Padding="15, 10, 10, 10"
+                                BackgroundColor="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Source="{Binding Logo}"
+                                            WidthRequest="48"
+                                            HeightRequest="48"
+                                            Aspect="AspectFit"
+                                            VerticalOptions="Center"/>
+
+                                        <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="{Binding FormattedHeader}"
+                                            FontSize="16"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"/>
+
+                                        <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding FormattedContent}"
+                                            FontSize="16"
+                                            TextColor="Black"
+                                            VerticalOptions="Center"/>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
 
             </ScrollView>
         </Grid>

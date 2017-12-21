@@ -86,7 +86,7 @@ namespace CryptoFolio.ServiceHelper
             }
 
             // Calculate current value
-            return items.Values.ToList();
+            return items.Values.OrderByDescending(x => x.FiatCurrencyValue).ToList();
         }
     }
 }

@@ -26,9 +26,11 @@
       <DependentUpon>InvestmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\APIClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\AggregatedInvestment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\CoinDTO.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\Investment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\FiatCurrencyManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\ImageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\LiteDbHelper\CoinList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\LiteDBManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\PreferenceManager.cs" />
