@@ -3,6 +3,7 @@ using CryptoFolio.Pages;
 using CryptoFolio.ServiceHelper.Base;
 using CryptoFolio.ServiceHelper.Values;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -24,6 +25,11 @@ namespace CryptoFolio.ViewModel
             _PercentageChanged24h = String.Format("{0} % {1}",_Coin.PercentChange24h, _Coin.PercentChange24h > 0 ? Symbols.ARROW_UP : Symbols.ARROW_DOWN);
 
             _PlusIconTapCommand = new Command(OnPlusIconTap);
+
+            ItemsLoaded = false;
+            IsLoading = true;
+
+            LoadInvestments();
         }
 
         private INavigation Navigation;
@@ -113,6 +119,81 @@ namespace CryptoFolio.ViewModel
         void OnPlusIconTap()
         {
             Navigation.PushAsync(new InvestmentPage(_Coin));
+        }
+
+        private ObservableCollection<Investment> _Investments = new ObservableCollection<Investment>();
+        public ObservableCollection<Investment> Investments
+        {
+            get { return _Investments; }
+            set
+            {
+                if (_Investments != value)
+                {
+                    _Investments = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Investments)));
+                }
+            }
+        }
+
+        private Investment _SelectedItem;
+        public Investment SelectedItem
+        {
+            get
+            {
+                return _SelectedItem;
+            }
+            set
+            {
+                _SelectedItem = value;
+
+                if (_SelectedItem == null)
+                    return;
+
+                //ListCoinTapCommand.Execute(_SelectedItem);
+
+                SelectedItem = null;
+            }
+        }
+
+        private bool _IsLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                if (_IsLoading != value)
+                {
+                    _IsLoading = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsLoading)));
+                }
+            }
+        }
+
+        private bool _ItemsLoaded;
+        public bool ItemsLoaded
+        {
+            get
+            {
+                return _ItemsLoaded;
+            }
+            set
+            {
+                if (_ItemsLoaded != value)
+                {
+                    _ItemsLoaded = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ItemsLoaded)));
+                }
+            }
+        }
+
+        private void LoadInvestments()
+        {
+            _Investments = new ObservableCollection<Investment>(DependencyService.Get<IVM>().GetLiteDbManager().LoadInvestmentsByCoinSymbol(_Coin.Symbol));
+            ItemsLoaded = true;
+            IsLoading = false;
         }
     }
 }

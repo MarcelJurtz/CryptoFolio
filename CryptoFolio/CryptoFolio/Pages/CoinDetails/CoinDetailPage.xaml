@@ -11,8 +11,11 @@
             WinPhone="20, 20, 20, 20" />
     </ContentPage.Padding>
     <ContentPage.Content>
-        <Grid>
+        <Grid
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+                AbsoluteLayout.LayoutFlags="All">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -56,8 +59,16 @@
                 FontSize="20"
                 TextColor="{Binding StatusColor}"
                 HorizontalTextAlignment="End"/>
-
-            <ListView x:Name="coinList"
+            
+            <!--<AbsoluteLayout
+            HorizontalOptions="FillAndExpand" 
+            VerticalOptions="FillAndExpand" 
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"> -->           
+            
+                <ListView 
+                    x:Name="investmentsList"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
             BackgroundColor="White"
             ItemsSource="{Binding Investments}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
@@ -75,23 +86,23 @@
                                 BackgroundColor="White">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
+                                        <!--<RowDefinition Height="Auto" />-->
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Label
+                                    <!--<Label
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    Text="{Binding TransactionTimestamp}"
+                                    Text="{Binding FormattedTimestamp}"
                                     FontSize="16"
                                     TextColor="Black"
-                                    VerticalOptions="Center"/>
+                                    VerticalOptions="Center"/>-->
 
                                     <Label 
                                     Grid.Row="1"
-                                    Grid.Column="1"
+                                    Grid.Column="0"
                                     Text="{Binding FormattedDescription}"
                                     FontSize="16"
                                     TextColor="Black"
@@ -101,7 +112,36 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView> <!--
+                <ContentView 
+            x:Name="overlay" 
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+            AbsoluteLayout.LayoutFlags="All" 
+            IsVisible="{Binding IsLoading}" 
+            BackgroundColor="White" 
+            Padding="10, 0">
+                    <ActivityIndicator  
+                WidthRequest="110" 
+                HeightRequest="70" 
+                IsRunning="{Binding IsLoading}"
+                Color="Black" 
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"/>
+                </ContentView>
+            </AbsoluteLayout>-->
+
+            <Image
+                 Grid.Row="4"
+                 Grid.ColumnSpan="3"
+                 HorizontalOptions="Center"
+                 HeightRequest="48"
+                 WidthRequest="48"
+                 Source="{Binding PlusIcon}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                         Command="{Binding PlusIconTapCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

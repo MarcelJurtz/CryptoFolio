@@ -1,9 +1,7 @@
 ﻿using CryptoFolio.ServiceHelper;
 using CryptoFolio.ServiceHelper.Base;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -19,6 +17,7 @@ namespace CryptoFolio.ViewModel
             this.Navigation = navigation;
             _CancelCommand = new Command(OnCancelClick);
             _SaveCommand = new Command(OnSaveClick);
+            _TransactionDate = DateTime.Today;
         }
 
         private CoinDTO Coin;
@@ -38,7 +37,11 @@ namespace CryptoFolio.ViewModel
             }
             set
             {
-                if(_Received != decimal.Parse(value))
+                if(String.IsNullOrEmpty(value))
+                {
+                    _Received = 0;
+                }
+                else if(_Received != decimal.Parse(value))
                 {
                     _Received = decimal.Parse(value);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Received)));
@@ -63,7 +66,11 @@ namespace CryptoFolio.ViewModel
             }
             set
             {
-                if (_Spent != decimal.Parse(value))
+                if(String.IsNullOrEmpty(value))
+                {
+                    _Spent = 0;
+                }
+                else if (_Spent != decimal.Parse(value))
                 {
                     _Spent = decimal.Parse(value);
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Spent)));
