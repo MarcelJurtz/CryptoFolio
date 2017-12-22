@@ -68,8 +68,6 @@ namespace CryptoFolio.ViewModel
                 DependencyService.Get<IVM>().GetLiteDbManager().SaveCoins(response);
             }
 
-            //Task.Delay(10000).Wait();
-
             await navigation.PushAsync(new OverviewPage());
         }
     }

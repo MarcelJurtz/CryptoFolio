@@ -144,7 +144,7 @@ namespace CryptoFolio.ViewModel
 
         private void LoadAggregatedInvestments()
         {
-            _AggregatedInvestments = new ObservableCollection<AggregatedInvestment>(DependencyService.Get<IVM>().GetLiteDbManager().LoadAggregatedInvestments());
+            _AggregatedInvestments = new ObservableCollection<AggregatedInvestment>(DependencyService.Get<IVM>().GetLiteDbManager().LoadAggregatedInvestments(PreferenceManager.DefaultCurrencyId));
             ItemsLoaded = true;
             IsLoading = false;
         }
