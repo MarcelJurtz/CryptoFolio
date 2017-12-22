@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using CryptoFolio.Pages;
+using Xamarin.Forms;
 
 namespace CryptoFolio
 {
@@ -8,8 +9,12 @@ namespace CryptoFolio
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MainPage());
-		}
+			MainPage = new NavigationPage(new SplashscreenPage())
+            {
+                BarBackgroundColor = Color.FromHex("#48c259"),
+                BarTextColor = Color.FromHex("#f5f5f5")
+            };
+        }
 
 		protected override void OnStart ()
 		{

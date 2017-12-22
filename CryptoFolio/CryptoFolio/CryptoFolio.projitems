@@ -16,14 +16,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SplashscreenPage.xaml.cs">
+      <DependentUpon>SplashscreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\CoinDetails\CoinDetailPage.xaml.cs">
       <DependentUpon>CoinDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\InvestmentPage.xaml.cs">
       <DependentUpon>InvestmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\OverviewPage.xaml.cs">
+      <DependentUpon>OverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\APIClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\AggregatedInvestment.cs" />
@@ -42,10 +45,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMCoinDetails.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMAllCoins.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMInvestment.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMOverview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMSplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SplashscreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -58,6 +62,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\InvestmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\OverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

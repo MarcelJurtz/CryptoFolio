@@ -5,15 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace CryptoFolio.ViewModel
 {
-    public class VMMainPage : VM, INotifyPropertyChanged
+    public class VMOverview : VM, INotifyPropertyChanged
     {
-        public VMMainPage(INavigation navigation)
+        public VMOverview(INavigation navigation)
         {
             Navigation = navigation;
             _ListIconTapCommand = new Command(OnListIconTap);
@@ -41,6 +40,14 @@ namespace CryptoFolio.ViewModel
         void OnListIconTap()
         {
             Navigation.PushAsync(new AllCoinsPage());
+        }
+
+        public String Title
+        {
+            get
+            {
+                return "Overview";
+            }
         }
 
         private List<FiatCurrency> _Currencies;

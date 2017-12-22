@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CryptoFolio.Pages.SplashscreenPage"
+            BackgroundColor="{Binding RegularPrimaryColor}">
+    <ContentPage.Padding>
+        <OnPlatform 
+            x:TypeArguments="Thickness"                     
+            iOS="20, 40, 20, 20"                     
+            Android="20, 20, 20, 20"                    
+            WinPhone="20, 20, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="AspectFit"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="164"
+                HeightRequest="164"
+                Source="{Binding SplashScreenImage}" />
+
+            <ActivityIndicator 
+                Grid.Row="1"
+                Grid.Column="0"
+                IsRunning="True"
+                WidthRequest="64" 
+                HeightRequest="64" 
+                Color="{Binding RegularTextColor}" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                Margin="{Binding LoaderMargin}"/>
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="{Binding LoadingText}"
+                HorizontalTextAlignment="Center"
+                FontSize="{Binding RegularTextSize}"
+                TextColor="{Binding RegularTextColor}"/>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

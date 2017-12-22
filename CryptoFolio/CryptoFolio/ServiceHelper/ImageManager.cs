@@ -132,5 +132,15 @@ namespace CryptoFolio.ServiceHelper
             String id = GetIdBySymbol(symbol);
             return ImageSource.FromFile(id.Equals("0x") ? symbol.ToLower().Replace('-', '_') : id.Replace('-', '_'));
         }
+
+        public ImageSource GetSplashScreenImage()
+        {
+            return ImageSource.FromFile("app_splashscreen");
+        }
+
+        public ImageSource GetLoadingIndicator()
+        {
+            return ImageSource.FromFile("app_loading_indicator");
+        }
     }
 }

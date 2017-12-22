@@ -21,7 +21,7 @@ namespace CryptoFolio.ViewModel
             _IsLoading = true;
 
 
-            client = new APIClient();
+            client = DependencyService.Get<IVM>().GetAPIClient();
             
             _ListCoinTapCommand = new Command(OnListCoinTap);
 
