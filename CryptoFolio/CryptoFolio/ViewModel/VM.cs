@@ -20,11 +20,9 @@ namespace CryptoFolio.ViewModel
             imageManager = new ImageManager();
         }
 
+        private const int _FONT_SIZE_TEXT_REGULAR = 16;
         private const int _FONT_SIZE_MAIN_PAGE_HEADING = 32;
-        public int FONT_SIZE_MAIN_PAGE_HEADING { get { return _FONT_SIZE_MAIN_PAGE_HEADING; } }
-
         private const int _FONT_SIZE_MAIN_PAGE_SUBHEADING = 26;
-        public int FONT_SIZE_MAIN_PAGE_SUBHEADING { get { return _FONT_SIZE_MAIN_PAGE_SUBHEADING; } }
 
         public LiteDBManager GetLiteDbManager()
         {
@@ -50,6 +48,14 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
+                return Color.Black;
+            }
+        }
+
+        public Color LightTextColor
+        {
+            get
+            {
                 return Color.FromHex("#f5f5f5");
             }
         }
@@ -66,15 +72,23 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
-                return 16;
+                return _FONT_SIZE_TEXT_REGULAR;
             }
         }
 
-        public double LargeTextSize
+        public double SubHeadingTextSize
         {
             get
             {
-                return 28;
+                return _FONT_SIZE_MAIN_PAGE_SUBHEADING;
+            }
+        }
+
+        public double HeadingTextSize
+        {
+            get
+            {
+                return _FONT_SIZE_MAIN_PAGE_HEADING;
             }
         }
     }

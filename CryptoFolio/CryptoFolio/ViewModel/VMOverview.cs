@@ -29,8 +29,24 @@ namespace CryptoFolio.ViewModel
 
         private INavigation Navigation;
 
-        public String TotalOutputString { get { return "5 $"; } }
-        public String TotalInputRatioString { get { return "0$ / +0$"; } }
+        private decimal _TotalOutput;
+        public String TotalOutputString
+        {
+            get
+            {
+                return $"{String.Format("{0:0.##}", _TotalOutput)} {DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol}";
+            }
+        }
+
+        private String _percentage;
+        private decimal _TotalInput;
+        public String TotalInputString
+        {
+            get
+            {
+                return $"{String.Format("{0:0.##}", _TotalInput)} {DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol} / {_percentage} %";
+            }
+        }
 
         public ImageSource ListIcon { get { return ImageSource.FromFile("fa_list.png"); } }
 
@@ -145,6 +161,16 @@ namespace CryptoFolio.ViewModel
         private void LoadAggregatedInvestments()
         {
             _AggregatedInvestments = new ObservableCollection<AggregatedInvestment>(DependencyService.Get<IVM>().GetLiteDbManager().LoadAggregatedInvestments(PreferenceManager.DefaultCurrencyId));
+
+            foreach(AggregatedInvestment ai in _AggregatedInvestments)
+            {
+                _TotalInput += ai.FiatCurrencyInput;
+                _TotalOutput += ai.FiatCurrencyValue;
+            }
+
+            decimal percentage = _TotalOutput / _TotalInput * 100;
+            _percentage = percentage > 0 ? "+ " + String.Format("{0:0.##}", percentage) : String.Format("{0:0.##}", percentage);
+
             ItemsLoaded = true;
             IsLoading = false;
         }

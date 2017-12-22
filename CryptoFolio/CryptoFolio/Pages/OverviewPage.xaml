@@ -54,14 +54,16 @@
                 Grid.ColumnSpan="2"
                 Text="{Binding TotalOutputString}"
                 HorizontalTextAlignment="Center"
-                FontSize="{Binding FONT_SIZE_MAIN_PAGE_HEADING}" />
+                TextColor="{Binding RegularTextColor}"
+                FontSize="{Binding HeadingTextSize}" />
 
             <Label
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
-                Text="{Binding TotalInputRatioString}"
+                Text="{Binding TotalInputString}"
                 HorizontalTextAlignment="Center"
-                FontSize="{Binding FONT_SIZE_MAIN_PAGE_SUBHEADING}" />
+                TextColor="{Binding RegularTextColor}"
+                FontSize="{Binding SubHeadingTextSize}" />
 
             <BoxView 
                 Grid.Row="3"
@@ -79,7 +81,6 @@
                     x:Name="aggregatedInvestmentsList"
                     Grid.Row="3"
                     Grid.ColumnSpan="3"
-                    BackgroundColor="White"
                     ItemsSource="{Binding AggregatedInvestments}"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     HasUnevenRows="true"
@@ -92,8 +93,7 @@
                                     <Grid
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                Padding="15, 10, 10, 10"
-                                BackgroundColor="White">
+                                Padding="15, 10, 10, 10">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />

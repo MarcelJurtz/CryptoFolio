@@ -48,7 +48,7 @@
                 Text="{Binding LoadingText}"
                 HorizontalTextAlignment="Center"
                 FontSize="{Binding RegularTextSize}"
-                TextColor="{Binding RegularTextColor}"/>
+                TextColor="{Binding LightTextColor}"/>
             
         </Grid>
     </ContentPage.Content>
