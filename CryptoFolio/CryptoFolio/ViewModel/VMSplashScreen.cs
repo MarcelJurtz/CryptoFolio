@@ -23,7 +23,7 @@ namespace CryptoFolio.ViewModel
 
         public void OnAppearing()
         {
-            TryLoadingCoinsAsync();
+            TryLoadCoinsAsync();
         }
 
         public ImageSource SplashScreenImage
@@ -58,7 +58,7 @@ namespace CryptoFolio.ViewModel
             }
         }
 
-        public async void TryLoadingCoinsAsync()
+        public async void TryLoadCoinsAsync()
         {
             DateTime localDate = DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate();
 
