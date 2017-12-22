@@ -60,17 +60,15 @@ namespace CryptoFolio.ViewModel
 
         public async void TryLoadingCoinsAsync()
         {
-                DateTime localDate = DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate();
-                DateTime currentDate = DateTime.Now;
-                DateTime delta = DateTime.Now - TimeSpan.FromDays(1);
+            DateTime localDate = DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate();
 
-                if (DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate() < DateTime.Now - TimeSpan.FromDays(1))
-                {
-                    var response = await apiClient.GetAllCurrenciesByDefaultFiatCurrencyAsync();
-                    DependencyService.Get<IVM>().GetLiteDbManager().SaveCoins(response);
-                }
+            if (DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate() < DateTime.Today)
+            {
+                var response = await apiClient.GetAllCurrenciesByDefaultFiatCurrencyAsync();
+                DependencyService.Get<IVM>().GetLiteDbManager().SaveCoins(response);
+            }
 
-            Task.Delay(10000).Wait();
+            //Task.Delay(10000).Wait();
 
             await navigation.PushAsync(new OverviewPage());
         }

@@ -24,27 +24,39 @@ namespace CryptoFolio.ServiceHelper
         public void SaveCoins(List<CoinDTO> ApiLoadedCoins)
         {
             var doc = liteDatabase.GetCollection<CoinList>(coinDocument);
-            doc.Delete(Query.All());
-
-            CoinList coinDbEntry = new CoinList
+            var res = doc.FindOne(x => x.Updated == DateTime.Today);
+            if(res != null)
             {
-                Id = 0,
-                Coins = ApiLoadedCoins,
-                Updated = DateTime.Now
-            };
+                res.Coins = ApiLoadedCoins;
+                doc.Update(res);
+            }
+            else
+            {
+                CoinList coinDbEntry = new CoinList
+                {
+                    Coins = ApiLoadedCoins,
+                    Updated = DateTime.Today
+                };
 
-            doc.Insert(coinDbEntry);
+                doc.Insert(coinDbEntry);
+            }
+        }
+
+        public void DeleteOldCoinData()
+        {
+            var doc = liteDatabase.GetCollection<CoinList>(coinDocument);
+            doc.Delete(x => x.Updated < DateTime.Today);
         }
 
         public List<CoinDTO> LoadCoins()
         {
-            var res = liteDatabase.GetCollection<CoinList>(coinDocument).FindById(0);
+            var res = liteDatabase.GetCollection<CoinList>(coinDocument).FindOne(x => x.Updated == DateTime.Today);
             return res.Coins;
         }
 
         public DateTime LoadCoinListLatestChangeDate()
         {
-            var res = liteDatabase.GetCollection<CoinList>(coinDocument).FindById(0);
+            var res = liteDatabase.GetCollection<CoinList>(coinDocument).FindOne(x => x.Updated == DateTime.Today);
             return res?.Updated ?? DateTime.MinValue;
         }
 

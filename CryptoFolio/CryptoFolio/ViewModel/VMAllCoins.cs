@@ -129,22 +129,19 @@ namespace CryptoFolio.ViewModel
                 return new Command(() =>
                 {
                     IsRefreshing = true;
-                    LoadCoinsAsync();
+                    LoadCoinsAsync(true);
                 });
             }
         }
 
-        private async void LoadCoinsAsync()
+        private async void LoadCoinsAsync(bool forceReload = false)
         {
-            DateTime localDate = DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate();
-            DateTime currentDate = DateTime.Now;
-            DateTime delta = DateTime.Now - TimeSpan.FromDays(1);
-
-            if (DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate() < DateTime.Now - TimeSpan.FromDays(1))
+            if (DependencyService.Get<IVM>().GetLiteDbManager().LoadCoinListLatestChangeDate() < DateTime.Today || forceReload)
             {
                 var response = await client.GetAllCurrenciesByDefaultFiatCurrencyAsync();
                 Coins = new ObservableCollection<CoinDTO>(response);
 
+                DependencyService.Get<IVM>().GetLiteDbManager().DeleteOldCoinData();
                 DependencyService.Get<IVM>().GetLiteDbManager().SaveCoins(response);
             }
             else
