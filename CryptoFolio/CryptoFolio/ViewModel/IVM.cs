@@ -1,4 +1,5 @@
 ﻿using CryptoFolio.ServiceHelper;
+using CryptoFolio.ServiceHelper.Localization;
 
 namespace CryptoFolio.ViewModel
 {
@@ -8,5 +9,6 @@ namespace CryptoFolio.ViewModel
         LiteDBManager GetLiteDbManager();
         FiatCurrencyManager GetFiatCurrencyManager();
         ImageManager GetImageManager();
+        LanguageManager GetLanguageManager();
     }
 }

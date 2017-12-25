@@ -1,9 +1,8 @@
 ﻿using CryptoFolio.Pages;
 using CryptoFolio.ServiceHelper;
+using CryptoFolio.ServiceHelper.Localization;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CryptoFolio.ViewModel
@@ -13,11 +12,13 @@ namespace CryptoFolio.ViewModel
         ImageManager imageManager;
         APIClient apiClient;
         INavigation navigation;
+        Dictionary<CryptoFolioStrings, String> strings;
 
         public VMSplashScreen(INavigation navigation)
         {
             apiClient = DependencyService.Get<IVM>().GetAPIClient();
             imageManager = DependencyService.Get<IVM>().GetImageManager();
+            strings = DependencyService.Get<IVM>().GetLanguageManager().GetStringsForDefaultLanguage();
             this.navigation = navigation;
         }
 
@@ -46,7 +47,7 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
-                return "Loading Coins...";
+                return strings[CryptoFolioStrings.INIT_LOADING_COINS];
             }
         }
 

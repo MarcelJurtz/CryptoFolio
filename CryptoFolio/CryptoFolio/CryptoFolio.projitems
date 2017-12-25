@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\ImageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\LiteDbHelper\CoinList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\LiteDBManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Localization\LanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\PreferenceManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Values\ColorValues.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ServiceHelper\Base\FiatCurrency.cs" />

@@ -1,65 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
 
 namespace CryptoFolio.ServiceHelper.Localization
 {
     public class LanguageManager
     {
-        private Dictionary<String, String> Strings;
+        public Dictionary<CryptoFolioStrings, String> GetStringsForDefaultLanguage()
+        {
+            String defaultLanguageIsoString = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+
+            // ISO Codes: https://www.worldatlas.com/aatlas/ctycodes.htm
+
+            switch (defaultLanguageIsoString)
+            {
+                case "DE":
+                    return STRINGS_DE;
+                default:
+                    return STRINGS_EN;
+            }
+        }
 
         #region Keys
-
-        public const String INIT_LOADING_COINS = "init_loading_coins";
-
-        public const String TITLE_OVERVIEW = "title_overview";
-        public const String TITLE_ALL_COINS = "title_all_coins";
-        public const String TITLE_INVESTMENT = "title_investment";
-
-        public const String INV_BOUGHT = "inv_bought";
-        public const String INV_FOR = "inv_for";
-        public const String INV_DATE = "inv_date";
-        public const String INV_COMMENT = "inv_comment";
-
-        public const String CMD_SAVE = "cmd_save";
-        public const String CMD_CANCEL = "cmd_cancel";
 
         #endregion
 
         #region EN
 
-        private Dictionary<String, String> en = new Dictionary<string, string>
+        private Dictionary<CryptoFolioStrings, String> STRINGS_EN = new Dictionary<CryptoFolioStrings, string>
         {
-            { INIT_LOADING_COINS, "Loading Coins..." },
-            { TITLE_OVERVIEW, "Overview" },
-            { TITLE_ALL_COINS, "All Coins" },
-            { TITLE_INVESTMENT, "New Investment" },
-            { INV_BOUGHT, "Bought:" },
-            { INV_FOR, "For:" },
-            { INV_DATE, "Date:" },
-            { INV_COMMENT, "Comment:" },
-            { CMD_SAVE, "Save" },
-            { CMD_CANCEL, "Cancel" }
+            { CryptoFolioStrings.INIT_LOADING_COINS, "Loading Coins..." },
+            { CryptoFolioStrings.TITLE_OVERVIEW, "Overview" },
+            { CryptoFolioStrings.TITLE_ALL_COINS, "All Coins" },
+            { CryptoFolioStrings.TITLE_INVESTMENT, "New Investment" },
+            { CryptoFolioStrings.INV_BOUGHT, "Bought:" },
+            { CryptoFolioStrings.INV_FOR, "For:" },
+            { CryptoFolioStrings.INV_DATE, "Date:" },
+            { CryptoFolioStrings.INV_COMMENT, "Comment:" },
+            { CryptoFolioStrings.CMD_SAVE, "Save" },
+            { CryptoFolioStrings.CMD_CANCEL, "Cancel" }
         };
 
         #endregion
 
         #region DE
 
-        private Dictionary<String, String> de = new Dictionary<string, string>
+        private Dictionary<CryptoFolioStrings, String> STRINGS_DE = new Dictionary<CryptoFolioStrings, string>
         {
-            { INIT_LOADING_COINS, "Lade Coins..." },
-            { TITLE_OVERVIEW, "Übersicht" },
-            { TITLE_ALL_COINS, "Alle Coins" },
-            { TITLE_INVESTMENT, "Neues Investment" },
-            { INV_BOUGHT, "Gekauft:" },
-            { INV_FOR, "Für:" },
-            { INV_DATE, "Datum:" },
-            { INV_COMMENT, "Kommentar:" },
-            { CMD_SAVE, "Speichern" },
-            { CMD_CANCEL, "Abbruch" }
+            { CryptoFolioStrings.INIT_LOADING_COINS, "Lade Coins..." },
+            { CryptoFolioStrings.TITLE_OVERVIEW, "Übersicht" },
+            { CryptoFolioStrings.TITLE_ALL_COINS, "Alle Coins" },
+            { CryptoFolioStrings.TITLE_INVESTMENT, "Neues Investment" },
+            { CryptoFolioStrings.INV_BOUGHT, "Gekauft:" },
+            { CryptoFolioStrings.INV_FOR, "Für:" },
+            { CryptoFolioStrings.INV_DATE, "Datum:" },
+            { CryptoFolioStrings.INV_COMMENT, "Kommentar:" },
+            { CryptoFolioStrings.CMD_SAVE, "Speichern" },
+            { CryptoFolioStrings.CMD_CANCEL, "Abbruch" }
         };
 
         #endregion
+    }
+
+    public enum CryptoFolioStrings
+    {
+        INIT_LOADING_COINS,
+        TITLE_OVERVIEW,
+        TITLE_ALL_COINS,
+        TITLE_INVESTMENT,
+        INV_BOUGHT,
+        INV_FOR,
+        INV_DATE,
+        INV_COMMENT,
+        CMD_SAVE,
+        CMD_CANCEL
     }
 }

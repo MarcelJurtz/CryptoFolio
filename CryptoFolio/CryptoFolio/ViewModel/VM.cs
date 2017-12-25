@@ -1,4 +1,5 @@
 ﻿using CryptoFolio.ServiceHelper;
+using CryptoFolio.ServiceHelper.Localization;
 using CryptoFolio.ViewModel;
 using Xamarin.Forms;
 
@@ -11,6 +12,7 @@ namespace CryptoFolio.ViewModel
         private LiteDBManager liteDbManager;
         private FiatCurrencyManager fiatCurrencyManager;
         private ImageManager imageManager;
+        private LanguageManager languageManager;
 
         public VM()
         {
@@ -18,6 +20,7 @@ namespace CryptoFolio.ViewModel
             liteDbManager = new LiteDBManager();
             fiatCurrencyManager = new FiatCurrencyManager();
             imageManager = new ImageManager();
+            languageManager = new LanguageManager();
         }
 
         private const int _FONT_SIZE_TEXT_REGULAR = 16;
@@ -42,6 +45,11 @@ namespace CryptoFolio.ViewModel
         public APIClient GetAPIClient()
         {
             return apiClient;
+        }
+
+        public LanguageManager GetLanguageManager()
+        {
+            return languageManager;
         }
 
         public Color RegularTextColor
