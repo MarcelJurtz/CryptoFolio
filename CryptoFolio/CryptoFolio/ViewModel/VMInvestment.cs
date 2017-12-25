@@ -1,6 +1,8 @@
 ﻿using CryptoFolio.ServiceHelper;
 using CryptoFolio.ServiceHelper.Base;
+using CryptoFolio.ServiceHelper.Localization;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -11,10 +13,13 @@ namespace CryptoFolio.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        Dictionary<CryptoFolioStrings, String> strings;
+
         public VMInvestment(INavigation navigation, CoinDTO coin)
         {
             this.Coin = coin;
             this.Navigation = navigation;
+            strings = DependencyService.Get<IVM>().GetLanguageManager().GetStringsForDefaultLanguage();
             _CancelCommand = new Command(OnCancelClick);
             _SaveCommand = new Command(OnSaveClick);
             _TransactionDate = DateTime.Today;
@@ -23,10 +28,10 @@ namespace CryptoFolio.ViewModel
         private CoinDTO Coin;
         private INavigation Navigation;
 
-        public String Header { get { return "New Investment"; } }
+        public String Title { get { return strings[CryptoFolioStrings.TITLE_INVESTMENT]; } }
 
         #region Money Received
-        public String ReceivedText { get { return "Bought:"; } }
+        public String ReceivedText { get { return strings[CryptoFolioStrings.INV_BOUGHT]; } }
 
         private decimal _Received = 0;
         public String Received
@@ -55,7 +60,7 @@ namespace CryptoFolio.ViewModel
 
         #region Money Spent
 
-        public String SpentText { get { return "For:"; } }
+        public String SpentText { get { return strings[CryptoFolioStrings.INV_FOR]; } }
 
         private decimal _Spent = 0;
         public String Spent
@@ -84,7 +89,7 @@ namespace CryptoFolio.ViewModel
 
         #region Transaction Timestamp
 
-        public String TimestampText { get { return "Date:"; } }
+        public String TimestampText { get { return strings[CryptoFolioStrings.INV_DATE]; } }
 
         private DateTime _TransactionDate;
         public DateTime TransactionDate
@@ -107,7 +112,7 @@ namespace CryptoFolio.ViewModel
 
         #region Comment
 
-        public String CommentText { get { return "Comment:"; } }
+        public String CommentText { get { return strings[CryptoFolioStrings.INV_COMMENT]; } }
 
         private String _Comment;
         public String Comment
@@ -130,11 +135,11 @@ namespace CryptoFolio.ViewModel
 
         #region Buttons OK / Cancel
 
-        public String CancelButtonText { get { return "Cancel"; } }
+        public String CancelButtonText { get { return strings[CryptoFolioStrings.CMD_CANCEL]; } }
         private ICommand _CancelCommand;
         public ICommand CancelCommand { get { return _CancelCommand; } }
 
-        public String SaveButtonText { get { return "Save"; } }
+        public String SaveButtonText { get { return strings[CryptoFolioStrings.CMD_SAVE]; } }
         private ICommand _SaveCommand;
         public ICommand SaveCommand { get { return _SaveCommand; } }
 

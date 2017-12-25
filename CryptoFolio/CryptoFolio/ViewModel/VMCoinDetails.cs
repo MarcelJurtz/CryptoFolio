@@ -35,13 +35,7 @@ namespace CryptoFolio.ViewModel
         private INavigation Navigation;
         private CoinDTO _Coin;
 
-        public String Title
-        {
-            get
-            {
-                return _CoinId.ToFirstLetterUpperCase();
-            }
-        }
+        public String Title { get{ return _CoinId.ToFirstLetterUpperCase(); } }
 
         private String _CoinId;
         public String CoinId

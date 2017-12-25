@@ -1,5 +1,6 @@
 ﻿using CryptoFolio.ServiceHelper;
 using CryptoFolio.ServiceHelper.Base;
+using CryptoFolio.ServiceHelper.Localization;
 using CryptoFolio.ServiceHelper.Values;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace CryptoFolio.ViewModel
 {
     public class VMOverview : VM, INotifyPropertyChanged
     {
+        Dictionary<CryptoFolioStrings, String> strings;
+
         public VMOverview(INavigation navigation)
         {
             Navigation = navigation;
@@ -21,6 +24,8 @@ namespace CryptoFolio.ViewModel
 
             _ItemsLoaded = false;
             _IsLoading = true;
+
+            strings = DependencyService.Get<IVM>().GetLanguageManager().GetStringsForDefaultLanguage();
 
             LoadAggregatedInvestments();
         }
@@ -62,7 +67,7 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
-                return "Overview";
+                return strings[CryptoFolioStrings.TITLE_OVERVIEW];
             }
         }
 

@@ -1,10 +1,10 @@
 ﻿using CryptoFolio.ServiceHelper;
 using CryptoFolio.ServiceHelper.Base;
+using CryptoFolio.ServiceHelper.Localization;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -14,6 +14,7 @@ namespace CryptoFolio.ViewModel
     {
         private INavigation _Navigation;
         APIClient client;
+        Dictionary<CryptoFolioStrings, String> strings;
 
         public VMAllCoins(INavigation navigation)
         {
@@ -22,6 +23,7 @@ namespace CryptoFolio.ViewModel
 
 
             client = DependencyService.Get<IVM>().GetAPIClient();
+            strings = DependencyService.Get<IVM>().GetLanguageManager().GetStringsForDefaultLanguage();
             
             _ListCoinTapCommand = new Command(OnListCoinTap);
 
@@ -44,10 +46,7 @@ namespace CryptoFolio.ViewModel
             }
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public String Title { get { return strings[CryptoFolioStrings.TITLE_ALL_COINS]; } }
 
         private ICommand _ListCoinTapCommand;
         public ICommand ListCoinTapCommand { get { return _ListCoinTapCommand; } }
@@ -118,7 +117,7 @@ namespace CryptoFolio.ViewModel
             set
             {
                 _isRefreshing = value;
-                OnPropertyChanged(nameof(IsRefreshing));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsRefreshing)));
             }
         }
 
