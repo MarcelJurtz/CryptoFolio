@@ -138,12 +138,12 @@ namespace CryptoFolio.ViewModel
         private ICommand _SaveCommand;
         public ICommand SaveCommand { get { return _SaveCommand; } }
 
-        private void OnCancelClick()
+        private async void OnCancelClick()
         {
-            Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
 
-        private void OnSaveClick()
+        private async void OnSaveClick()
         {
             Investment investment = new Investment
             {
@@ -157,6 +157,8 @@ namespace CryptoFolio.ViewModel
 
             LiteDBManager liteDBManager = DependencyService.Get<IVM>().GetLiteDbManager();
             liteDBManager.SaveInvestment(investment);
+
+            await Navigation.PopAsync();
         }
 
         #endregion
