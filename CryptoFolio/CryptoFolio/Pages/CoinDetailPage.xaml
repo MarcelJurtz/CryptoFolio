@@ -69,7 +69,6 @@
                     x:Name="investmentsList"
                     Grid.Row="3"
                     Grid.ColumnSpan="3"
-            BackgroundColor="White"
             ItemsSource="{Binding Investments}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             HasUnevenRows="true"
@@ -82,8 +81,7 @@
                                 <Grid
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                Padding="15, 10, 10, 10"
-                                BackgroundColor="White">
+                                Padding="15, 10, 10, 10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <!--<RowDefinition Height="Auto" />-->

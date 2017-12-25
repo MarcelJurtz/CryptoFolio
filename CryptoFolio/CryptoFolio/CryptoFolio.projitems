@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\AllCoins\AllCoinsPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AllCoinsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -19,7 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SplashscreenPage.xaml.cs">
       <DependentUpon>SplashscreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\CoinDetails\CoinDetailPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CoinDetailPage.xaml.cs">
       <DependentUpon>CoinDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\InvestmentPage.xaml.cs">
@@ -57,7 +57,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\CoinDetails\CoinDetailPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\CoinDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -71,7 +71,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AllCoins\AllCoinsPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AllCoinsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -85,8 +85,5 @@
     <Page Include="$(MSBuildThisFileDirectory)Pages\NewInvestment\Investment.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Pages\AllCoins\" />
   </ItemGroup>
 </Project>
