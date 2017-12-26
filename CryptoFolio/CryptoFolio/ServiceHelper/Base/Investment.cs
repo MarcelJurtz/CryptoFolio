@@ -20,7 +20,7 @@ namespace CryptoFolio.ServiceHelper.Base
             get
             {
                 //return $"Bought {RevenueInCryptoCurrency} {CryptoCurrencySymbol} for {ExpenseInFiatCurrency} {FiatCurrencySymbol}";
-                return $"{TransactionTimestamp.ToString("dd.MM.yyyy")}: +{RevenueInCryptoCurrency} {CryptoCurrencySymbol} / - {ExpenseInFiatCurrency} {FiatCurrencySymbol}";
+                return $"{TransactionTimestamp.ToString("dd.MM.yyyy")}: + {RevenueInCryptoCurrency} {CryptoCurrencySymbol} / - {ExpenseInFiatCurrency} {FiatCurrencySymbol}";
             }
         }
 

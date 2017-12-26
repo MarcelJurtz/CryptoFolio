@@ -23,7 +23,7 @@ namespace CryptoFolio.ServiceHelper.Base
         {
             get
             {
-                return $"{String.Format("{0:0.##}", FiatCurrencyValue)} {FiatCurrencySymbol} / {String.Format("{0:0.##}", FiatCurrencyInput)} {FiatCurrencySymbol}";
+                return $"{String.Format("{0:n}", FiatCurrencyValue)} {FiatCurrencySymbol} / {String.Format("{0:n}", FiatCurrencyInput)} {FiatCurrencySymbol}";
             }
         }
 

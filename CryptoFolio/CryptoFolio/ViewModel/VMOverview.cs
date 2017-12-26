@@ -39,7 +39,7 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
-                return $"{String.Format("{0:0.##}", _TotalOutput)} {DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol}";
+                return $"{String.Format("{0:n}", _TotalOutput)} {DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol}";
             }
         }
 
@@ -49,7 +49,7 @@ namespace CryptoFolio.ViewModel
         {
             get
             {
-                return $"{String.Format("{0:0.##}", _TotalInput)} {DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol} / {_percentage} %";
+                return $"{String.Format("{0:n}", _TotalInput)} {DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol} / {_percentage} %";
             }
         }
 
@@ -91,6 +91,11 @@ namespace CryptoFolio.ViewModel
                     _SelectedCurrency = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCurrency)));
                     PreferenceManager.DefaultCurrencyId = _SelectedCurrency.ID;
+
+                    // Reload Coins for new Currency
+                    DependencyService.Get<IVM>().GetLiteDbManager().DeleteAllCoinData();
+
+                    Navigation.PopAsync();
                 }
             }
         }
@@ -174,7 +179,7 @@ namespace CryptoFolio.ViewModel
             }
 
             decimal percentage = _TotalOutput / _TotalInput * 100;
-            _percentage = percentage > 0 ? "+ " + String.Format("{0:0.##}", percentage) : String.Format("{0:0.##}", percentage);
+            _percentage = percentage > 0 ? "+ " + String.Format("{0:n}", percentage) : String.Format("{0:n}", percentage);
 
             ItemsLoaded = true;
             IsLoading = false;

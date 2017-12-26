@@ -47,6 +47,12 @@ namespace CryptoFolio.ServiceHelper
             doc.Delete(x => x.Updated < DateTime.Today);
         }
 
+        public void DeleteAllCoinData()
+        {
+            var doc = liteDatabase.GetCollection<CoinList>(DOC_COIN);
+            doc.Delete(x => x.Updated <= DateTime.Today);
+        }
+
         public List<CoinDTO> LoadCoins()
         {
             var res = liteDatabase.GetCollection<CoinList>(DOC_COIN).FindOne(x => x.Updated == DateTime.Today);

@@ -85,9 +85,9 @@ namespace CryptoFolio.ServiceHelper.Base
                 switch(defaultCurrency.ID)
                 {
                     case "EUR":
-                        return String.Format("{0:F2} {1}", PriceEur, defaultCurrency.Symbol);
+                        return String.Format("{0:n} {1}", PriceEur, defaultCurrency.Symbol);
                     default:
-                        return String.Format("{0:F2} {1}", PriceUsd, defaultCurrency.Symbol);
+                        return String.Format("{0:n} {1}", PriceUsd, defaultCurrency.Symbol);
                 }
             }
         }
