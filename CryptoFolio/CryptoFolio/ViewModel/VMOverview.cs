@@ -27,6 +27,8 @@ namespace CryptoFolio.ViewModel
 
             strings = DependencyService.Get<IVM>().GetLanguageManager().GetStringsForDefaultLanguage();
 
+            _CurrencyPickerEnabled = true;
+
             LoadAggregatedInvestments();
         }
 
@@ -86,7 +88,7 @@ namespace CryptoFolio.ViewModel
             }
             set
             {
-                if(_SelectedCurrency != value)
+                if (_SelectedCurrency != value)
                 {
                     _SelectedCurrency = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCurrency)));
@@ -134,6 +136,15 @@ namespace CryptoFolio.ViewModel
             }
         }
 
+        private bool _CurrencyPickerEnabled;
+        public bool CurrencyPickerEnabled
+        {
+            get
+            {
+                return _CurrencyPickerEnabled;
+            }
+        }
+
         private bool _IsLoading;
         public bool IsLoading
         {
@@ -172,15 +183,25 @@ namespace CryptoFolio.ViewModel
         {
             _AggregatedInvestments = new ObservableCollection<AggregatedInvestment>(DependencyService.Get<IVM>().GetLiteDbManager().LoadAggregatedInvestments(PreferenceManager.DefaultCurrencyId));
 
-            foreach(AggregatedInvestment ai in _AggregatedInvestments)
+            if (_AggregatedInvestments.Count > 0)
             {
-                _TotalInput += ai.FiatCurrencyInput;
-                _TotalOutput += ai.FiatCurrencyValue;
+                _CurrencyPickerEnabled = false;
+
+                foreach (AggregatedInvestment ai in _AggregatedInvestments)
+                {
+                    _TotalInput += ai.FiatCurrencyInput;
+                    _TotalOutput += ai.FiatCurrencyValue;
+                }
+
+                decimal percentage = _TotalOutput / _TotalInput * 100;
+                _percentage = percentage > 0 ? "+ " + String.Format("{0:n}", percentage) : String.Format("{0:n}", percentage);
             }
-
-            decimal percentage = _TotalOutput / _TotalInput * 100;
-            _percentage = percentage > 0 ? "+ " + String.Format("{0:n}", percentage) : String.Format("{0:n}", percentage);
-
+            else
+            {
+                _percentage = String.Format("{0:n}", 0);
+                _TotalInput = 0m;
+                _TotalInput = 0m;
+            }
             ItemsLoaded = true;
             IsLoading = false;
         }

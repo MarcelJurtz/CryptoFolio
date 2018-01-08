@@ -29,6 +29,7 @@
             <Picker
                 Grid.Row="0"
                 Grid.Column="0"
+                IsEnabled="{Binding CurrencyPickerEnabled}"
                 ItemsSource="{Binding Currencies}"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}"/>
