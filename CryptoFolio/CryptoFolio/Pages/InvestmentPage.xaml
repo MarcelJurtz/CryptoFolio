@@ -38,6 +38,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 VerticalOptions="Center"
+                Keyboard="Numeric"
                 Text="{Binding Received}"
                 FontSize="16"
                 TextColor="Black"/>
@@ -67,6 +68,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 VerticalOptions="Center"
+                Keyboard="Numeric"
                 Text="{Binding Spent}"
                 FontSize="16"
                 TextColor="Black"/>
@@ -115,6 +117,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 VerticalOptions="Center"
+                Keyboard="Text"
                 Text="{Binding Comment}"
                 FontSize="16"
                 TextColor="Black"/>
