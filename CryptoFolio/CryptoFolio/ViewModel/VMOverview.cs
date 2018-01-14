@@ -193,7 +193,7 @@ namespace CryptoFolio.ViewModel
                     _TotalOutput += ai.FiatCurrencyValue;
                 }
 
-                decimal percentage = _TotalOutput / _TotalInput * 100;
+                decimal percentage = _TotalInput == 0 ? 0 : _TotalOutput / _TotalInput * 100;
                 _percentage = percentage > 0 ? "+ " + String.Format("{0:n}", percentage) : String.Format("{0:n}", percentage);
             }
             else

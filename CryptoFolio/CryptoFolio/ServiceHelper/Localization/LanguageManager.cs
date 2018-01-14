@@ -38,7 +38,9 @@ namespace CryptoFolio.ServiceHelper.Localization
             { CryptoFolioStrings.INV_DATE, "Date:" },
             { CryptoFolioStrings.INV_COMMENT, "Comment:" },
             { CryptoFolioStrings.CMD_SAVE, "Save" },
-            { CryptoFolioStrings.CMD_CANCEL, "Cancel" }
+            { CryptoFolioStrings.CMD_CANCEL, "Cancel" },
+            { CryptoFolioStrings.INVESTMENDMODE_BUY, "Bought" },
+            { CryptoFolioStrings.INVESTMENTMODE_SELL, "Sold" }
         };
 
         #endregion
@@ -56,7 +58,9 @@ namespace CryptoFolio.ServiceHelper.Localization
             { CryptoFolioStrings.INV_DATE, "Datum:" },
             { CryptoFolioStrings.INV_COMMENT, "Kommentar:" },
             { CryptoFolioStrings.CMD_SAVE, "Speichern" },
-            { CryptoFolioStrings.CMD_CANCEL, "Abbruch" }
+            { CryptoFolioStrings.CMD_CANCEL, "Abbruch" },
+            { CryptoFolioStrings.INVESTMENDMODE_BUY, "Kaufe" },
+            { CryptoFolioStrings.INVESTMENTMODE_SELL, "Verkaufe" }
         };
 
         #endregion
@@ -73,6 +77,8 @@ namespace CryptoFolio.ServiceHelper.Localization
         INV_DATE,
         INV_COMMENT,
         CMD_SAVE,
-        CMD_CANCEL
+        CMD_CANCEL,
+        INVESTMENDMODE_BUY,
+        INVESTMENTMODE_SELL
     }
 }

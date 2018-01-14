@@ -25,16 +25,13 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <!-- RECEIVED -->
+            <!-- BOUGHT / SOLD -->
             
-            <Label
-                x:Name="lblReceived"
+            <Picker
                 Grid.Row="0"
                 Grid.Column="0"
-                VerticalOptions="Center"
-                Text="{Binding ReceivedText}"
-                FontSize="16"
-                TextColor="Black"/>
+                ItemsSource="{Binding InvestmentModes}"
+                SelectedItem="{Binding SelectedInvestmentMode, Mode=TwoWay}"/>
 
             <Entry
                 x:Name="txtReceived"
@@ -54,7 +51,7 @@
                 FontSize="16"
                 TextColor="Black"/>
 
-            <!-- SPENT -->
+            <!-- FOR -->
 
             <Label
                 x:Name="lblSpent"

@@ -23,12 +23,38 @@ namespace CryptoFolio.ViewModel
             _CancelCommand = new Command(OnCancelClick);
             _SaveCommand = new Command(OnSaveClick);
             _TransactionDate = DateTime.Today;
+            _SelectedInvestmentMode = strings[CryptoFolioStrings.INVESTMENDMODE_BUY];
         }
 
         private CoinDTO Coin;
         private INavigation Navigation;
 
         public String Title { get { return strings[CryptoFolioStrings.TITLE_INVESTMENT]; } }
+
+        public String[] InvestmentModes
+        {
+            get
+            {
+                return new String[] { strings[CryptoFolioStrings.INVESTMENDMODE_BUY], strings[CryptoFolioStrings.INVESTMENTMODE_SELL] };
+            }
+        }
+
+        private String _SelectedInvestmentMode;
+        public String SelectedInvestmentMode
+        {
+            get
+            {
+                return _SelectedInvestmentMode;
+            }
+            set
+            {
+                if(_SelectedInvestmentMode != value)
+                {
+                    _SelectedInvestmentMode = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedInvestmentMode)));
+                }
+            }
+        }
 
         #region Money Received
         public String ReceivedText { get { return strings[CryptoFolioStrings.INV_BOUGHT]; } }
@@ -150,15 +176,33 @@ namespace CryptoFolio.ViewModel
 
         private async void OnSaveClick()
         {
-            Investment investment = new Investment
+            Investment investment;
+            if(_SelectedInvestmentMode == strings[CryptoFolioStrings.INVESTMENDMODE_BUY])
             {
-                CryptoCurrencySymbol = Coin.Symbol,
-                FiatCurrencySymbol = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol,
-                ExpenseInFiatCurrency = _Spent,
-                RevenueInCryptoCurrency = _Received,
-                TransactionTimestamp = _TransactionDate,
-                Comment = _Comment
-            };
+                investment = new Investment
+                {
+                    CryptoCurrencySymbol = Coin.Symbol,
+                    FiatCurrencySymbol = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol,
+                    Expense = _Spent,
+                    Revenue = _Received,
+                    TransactionTimestamp = _TransactionDate,
+                    Comment = _Comment,
+                    Mode = ServiceHelper.Base.InvestmentModes.BUY_CRYPTO
+                };
+            }
+            else
+            {
+                investment = new Investment
+                {
+                    CryptoCurrencySymbol = Coin.Symbol,
+                    FiatCurrencySymbol = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().Symbol,
+                    Expense = _Received,
+                    Revenue = _Spent,
+                    TransactionTimestamp = _TransactionDate,
+                    Comment = _Comment,
+                    Mode = ServiceHelper.Base.InvestmentModes.SELL_CRYPTO
+                };
+            }           
 
             LiteDBManager liteDBManager = DependencyService.Get<IVM>().GetLiteDbManager();
             liteDBManager.SaveInvestment(investment);

@@ -87,18 +87,39 @@ namespace CryptoFolio.ServiceHelper
             {
                 if(items.ContainsKey(investment.CryptoCurrencySymbol))
                 {
-                    items[investment.CryptoCurrencySymbol].CryptoCurrencyValue += investment.RevenueInCryptoCurrency;
-                    items[investment.CryptoCurrencySymbol].FiatCurrencyInput += investment.RevenueInCryptoCurrency;
+                    if(investment.Mode == InvestmentModes.BUY_CRYPTO)
+                    {
+                        items[investment.CryptoCurrencySymbol].CryptoCurrencyValue += investment.Revenue;
+                        items[investment.CryptoCurrencySymbol].FiatCurrencyInput += investment.Expense;
+                    }
+                    else
+                    {
+                        items[investment.CryptoCurrencySymbol].CryptoCurrencyValue -= investment.Expense;
+                        items[investment.CryptoCurrencySymbol].FiatCurrencyInput -= investment.Revenue;
+                    }
                 }
                 else
                 {
-                    items.Add(investment.CryptoCurrencySymbol, new AggregatedInvestment
+                    if(investment.Mode == InvestmentModes.BUY_CRYPTO)
                     {
-                        CryptoCurrencySymbol = investment.CryptoCurrencySymbol,
-                        CryptoCurrencyValue = investment.RevenueInCryptoCurrency,
-                        FiatCurrencyInput = investment.ExpenseInFiatCurrency,
-                        FiatCurrencySymbol = investment.FiatCurrencySymbol
-                    });
+                        items.Add(investment.CryptoCurrencySymbol, new AggregatedInvestment
+                        {
+                            CryptoCurrencySymbol = investment.CryptoCurrencySymbol,
+                            CryptoCurrencyValue = investment.Revenue,
+                            FiatCurrencyInput = investment.Expense,
+                            FiatCurrencySymbol = investment.FiatCurrencySymbol
+                        });
+                    }
+                    else
+                    {
+                        items.Add(investment.CryptoCurrencySymbol, new AggregatedInvestment
+                        {
+                            CryptoCurrencySymbol = investment.CryptoCurrencySymbol,
+                            CryptoCurrencyValue = investment.Expense,
+                            FiatCurrencyInput = investment.Revenue,
+                            FiatCurrencySymbol = investment.FiatCurrencySymbol
+                        });
+                    }
                 }
             }
 
