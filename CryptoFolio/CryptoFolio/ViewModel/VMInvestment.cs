@@ -4,6 +4,7 @@ using CryptoFolio.ServiceHelper.Localization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -24,6 +25,12 @@ namespace CryptoFolio.ViewModel
             _SaveCommand = new Command(OnSaveClick);
             _TransactionDate = DateTime.Today;
             _SelectedInvestmentMode = strings[CryptoFolioStrings.INVESTMENDMODE_BUY];
+
+            // TODO add fiat currency, remove currently selected currency
+            String defaultCurrencyId = DependencyService.Get<IVM>().GetFiatCurrencyManager().GetDefaultFiatCurrency().ID;
+            List<AggregatedInvestment> tempInvestments = DependencyService.Get<IVM>().GetLiteDbManager().LoadAggregatedInvestments(defaultCurrencyId);
+            _SpendableCurrencies = tempInvestments.Select(x => x.CryptoCurrencySymbol).ToArray();
+            _SelectedSpendableCurrency = _SpendableCurrencies[0];
         }
 
         private CoinDTO Coin;
@@ -52,6 +59,32 @@ namespace CryptoFolio.ViewModel
                 {
                     _SelectedInvestmentMode = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedInvestmentMode)));
+                }
+            }
+        }
+
+        private String[] _SpendableCurrencies;
+        public String[] SpendableCurrencies
+        {
+            get
+            {
+                return _SpendableCurrencies;
+            }
+        }
+
+        private String _SelectedSpendableCurrency;
+        public String SelectedSpendableCurrency
+        {
+            get
+            {
+                return _SelectedSpendableCurrency;
+            }
+            set
+            {
+                if(_SelectedSpendableCurrency != value)
+                {
+                    _SelectedSpendableCurrency = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedSpendableCurrency)));
                 }
             }
         }

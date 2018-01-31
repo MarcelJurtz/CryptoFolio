@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- BOUGHT / SOLD -->
-            
+                        
             <Picker
                 Grid.Row="0"
                 Grid.Column="0"
@@ -73,15 +73,21 @@
                 FontSize="16"
                 TextColor="Black"/>
 
-            <Label
+            <!--<Label
                 x:Name="lblSpentCurrency"
                 Grid.Row="1"
                 Grid.Column="2"
                 VerticalOptions="Center"
                 Text="{Binding SpentCurrencySymbol}"
                 FontSize="16"
-                TextColor="Black"/>
-            
+                TextColor="Black"/>-->
+
+            <Picker
+                Grid.Row="1"
+                Grid.Column="2"
+                ItemsSource="{Binding SpendableCurrencies}"
+                SelectedItem="{Binding SelectedSpendableCurrency, Mode=TwoWay}"/>
+
             <!-- TIMESTAMP -->
 
             <Label
